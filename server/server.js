@@ -13,14 +13,7 @@ app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
     console.log('New User Connected');
-    
-
-    socket.emit('newMessage', {
-        from: 'John',
-        text: 'See you there...',
-        createAt: 123123
-    });
-
+        
     //Email Socket Emit
     // socket.emit('newEmail', {
     //     from: 'johnDoe@example.com',
@@ -30,7 +23,12 @@ io.on('connection', (socket) => {
 
     //ForMessage
      socket.on('createMessage', (message) => {
-         console.log('createMessage', message);
+         console.log('createMessage', message)
+         io.emit('newMessage', {
+             from: message.from,
+             text: message.text,
+             createAt: new Date().getTime()
+         });
      });
 
     //For EMail Address

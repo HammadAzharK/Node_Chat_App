@@ -3,13 +3,7 @@
 
 var socket = io();
 socket.on('connect', function () {
-    console.log('Connected to server!!!');
-
-
-    socket.emit('createMessage', {
-        from: 'Uzair Shaid',
-        text: 'Yup thats works for me'
-    });
+    console.log('Connected to server!!!');  
 
     //For Email Address
     // socket.emit('createEmail',  {
